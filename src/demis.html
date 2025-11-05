@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/output.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="favicon.ico">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <title>HERO</title>
+</head>
+<body class="bg-zinc-950 bg-[url('/src/assets/bg1.svg')]">
+
+    <!-- Header  ✅-->
+    <header>
+        <div class="flex fixed w-full justify-between items-center px-10 py-3 backdrop-blur-lg z-50 border-b border-b-zinc-900 lg:px-32">
+            <!-- Logo -->
+            <figure class="flex gap-2 items-center">
+                <img class="w-10 h-10" src="assets/hero.png" alt="hero.png">
+                <span class="font-bold text-md">HERO</span>
+            </figure>
+            
+            <!-- Navbar -->
+            <navbar class="relative" x-data="{ openHam: false }" @click.away="openHam = false">
+                <!-- Hamburger Menu -->
+                <div @click="openHam = !openHam" class="cursor-pointer lg:hidden">
+                    <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20 7L4 7" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"></path> <path d="M20 12L4 12" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"></path> <path d="M20 17L4 17" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+                </div>
+                
+                <ul x-show="openHam || $store.screen.isDesktop()" 
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 transform -translate-y-2"
+                    x-transition:enter-end="opacity-100 transform translate-y-0"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 transform translate-y-0"
+                    x-transition:leave-end="opacity-0 transform -translate-y-2"
+                    class="absolute right-0 top-full w-52 flex flex-col gap-5 bg-zinc-900 p-5 rounded-lg shadow-md border border-zinc-700 transition-all duration-300 ease-in-out transform lg:static lg:flex-row lg:w-auto lg:bg-transparent lg:border-0 lg:shadow-none lg:p-0 lg:gap-5 lg:items-center">
+                    <li>
+                        <div class="dropdown">
+                            <div tabindex="0" role="button" class="menu hover:text-red-500 cursor-pointer flex flex-row items-center gap-2">
+                                <span>Beranda</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </div>
+                            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                                <li><a href="/src/index.html#home">Home</a></li>
+                                <li><a href="/src/index.html#tentang">Tentang</a></li>
+                                <li><a href="/src/index.html#sambutan">Sambutan</a></li>
+                                <li><a href="/src/index.html#visimisi">Visi Misi</a></li>
+                                <li><a href="/src/index.html#filosofi">Filosofi Logo</a></li>
+                                <li><a href="/src/index.html#struktur">Struktur</a></li>
+                                <li><a href="/src/index.html#berita">Berita</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li><a class="menu hover:text-red-500" href="/src/demis.html">Demisioner</a></li>
+
+                    <li>
+                        <div class="dropdown">
+                            <div tabindex="0" role="button" class="menu hover:text-red-500 cursor-pointer flex flex-row items-center gap-2">
+                                <span>Divisi</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </div>
+                            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                                <li><a href="/src/divisi/inti.html">Inti</a></li>
+                                <li><a href="/src/divisi/riset.html">Riset dan Pengembangan</a></li>
+                                <li><a href="/src/divisi/kesek.html">Kesekretariatan</a></li>
+                                <li><a href="/src/divisi/humas.html">Hubungan Masyarakat</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li x-show="!$store.screen.isDesktop()"><a class="menu" href="#contact">Hubungi Kami</a></li>
+                </ul>
+            </navbar>
+
+            <!-- Contact Button -->
+            <a href="#contact" class="hidden primary-button lg:block">
+                <span >Hubungi Kami</span>
+            </a>
+        </div>
+    </header>
+
+
+    <main>
+        <section id="home" class="pt-32 pb-32"> 
+    <div class="flex px-10 gap-10 items-center justify-between lg:px-32 flex flex-col lg:flex-row">
+        
+        <figure class="flex flex-col items-center justify-center lg:w-1/2 animate-[slideInLeft_0.5s_ease-in-out]">  
+                    <img class="slide-up rounded w-1/3 z-10 shadow-md w-80 h-auto rounded-3xl object-cover" src="/src/assets/struktur/demis.jpg" alt="">
+                    <div class="flex items-center justify-center gap-3 -translate-y-2">
+                        <img class="slide-left rounded w-1/3 -rotate-2 shadow-md w-80 h-auto rounded-3xl object-cover" src="/src/assets/struktur/demisbendera.jpg" alt="">
+                        <img class="slide-right rounded w-1/3 rotate-3 shadow-md w-80 h-auto rounded-3xl object-cover" src="/src/assets/struktur/demissantai.jpg" alt="">
+                    </div>
+        </figure>
+
+        <div class="">
+            <h1 class="text-2xl md:text-5xl lg:text-6xl animate-[slideInRight_0.5s_ease-in-out]" >
+                <span class="text-my-primary">D</span>emisioner
+            </h1>
+            <h1 class="text-2xl md:text-5xl lg:text-6xl animate-[slideInRight_0.5s_ease-in-out] delay-75" >
+                <span class="text-my-primary">H</span>.E.R.O
+            </h1>
+        </div>
+        
+    </div>
+    <section id="tupoksi" class="pt-32">
+            <div class="px-10 lg:px-32">
+                <h1 class="title text-center mb-16">Demisioner</h1>
+                
+                <div class="slide-down mt-10 p-7 border-t-4 rounded-t-none text-container-primary border-t-my-primary lg:mx-20 relative">
+                    <!-- Decorative Elements -->
+                    <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-my-primary rounded-full"></div>
+                    <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-my-primary rounded-full"></div>
+                    
+                    <div class="relative">
+                        <p class="slide-down text-zinc-300 leading-relaxed text-center">
+                            Bagian Demisioner merupakan wadah bagi para pengurus yang telah menyelesaikan masa baktinya di UKM Habibie Engineering Robotic Of Organization. Mereka adalah sosok-sosok yang telah memberikan dedikasi, waktu, dan pengetahuan terbaiknya dalam mengembangkan inovasi serta semangat kebersamaan di dunia robotika.
+Sebagai generasi yang pernah berperan aktif, para Demisioner menjadi sumber inspirasi dan motivasi bagi pengurus serta anggota baru untuk terus berkarya dan melanjutkan cita-cita organisasi.
+Melalui kolaborasi dan semangat kekeluargaan, Demisioner H.E.R.O tetap menjadi bagian penting dari perjalanan dan perkembangan komunitas ini — menjaga hubungan lintas generasi agar semangat inovasi, riset, dan teknologi tidak pernah padam.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+</section>
+        <!-- Struktur -->
+         
+        <section id="struktur" class="pt-10 px-10 lg:px-32">
+            
+ <!--Tempatnya anggota disini damaae -->
+            <h1 class="title text-center mt-40 mb-10 pt-32"></h1>
+            <div class="flex flex-wrap justify-center gap-8">
+                <section id="struktur" class="pt-32">
+            <div class="px-10 lg:px-32">
+                <h1 class="title text-center mb-10">Pengurus <span class="text-my-primary">Angkatan 1</span></h1>
+            </div>
+        </section>
+                <div class="flex flex-wrap justify-center gap-6">
+
+    <div class="bg-zinc-900 w-full sm:w-1/2 lg:w-1/4 rounded-2xl p-6 text-center relative overflow-hidden shadow-lg slide-right">
+        <div class="absolute -top-4 -left-4 w-24 h-24 bg-my-primary/10 rounded-full"></div>
+        <svg class="absolute bottom-4 right-4 w-10 h-10 text-my-primary opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27l-5.18 2.73 1-5.81-4.24-4.13 5.83-.85L12 3.99l2.6 5.23 5.83.85-4.24 4.13 1 5.81z"/></svg>
+        <div class="relative w-40 h-40 mx-auto mb-4">
+            <img class="w-full h-full rounded-2xl object-cover" src="/src/assets/struktur/demis/2.jpg" alt="Anggota 1">
+        </div>
+    </div>
+
+    <div class="bg-zinc-900 w-full sm:w-1/2 lg:w-1/4 rounded-2xl p-6 text-center relative overflow-hidden shadow-lg slide-up">
+        <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-my-primary/10 rounded-full"></div>
+        <svg class="absolute top-4 right-4 w-10 h-10 text-my-primary opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27l-5.18 2.73 1-5.81-4.24-4.13 5.83-.85L12 3.99l2.6 5.23 5.83.85-4.24 4.13 1 5.81z"/></svg>
+        <div class="relative w-40 h-40 mx-auto mb-4">
+            <img class="w-full h-full rounded-2xl object-cover" src="/src/assets/struktur/demis/9.jpg" alt="Anggota 2">
+        </div>
+    </div>
+
+    <div class="bg-zinc-900 w-full sm:w-1/2 lg:w-1/4 rounded-2xl p-6 text-center relative overflow-hidden shadow-lg slide-left">
+        <div class="absolute -top-4 -right-4 w-24 h-24 bg-my-primary/10 rounded-full"></div>
+        <svg class="absolute bottom-4 left-4 w-10 h-10 text-my-primary opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27l-5.18 2.73 1-5.81-4.24-4.13 5.83-.85L12 3.99l2.6 5.23 5.83.85-4.24 4.13 1 5.81z"/></svg>
+        <div class="relative w-40 h-40 mx-auto mb-4">
+            <img class="w-full h-full rounded-2xl object-cover" src="/src/assets/struktur/demis/3.jpg" alt="Anggota 3">
+        </div>
+    </div>
+    <div class="w-full sm:w-1/2 lg:w-1/4 rounded-2xl p-6 text-center relative overflow-hidden shadow-lg slide-right">
+        <div class="absolute -top-4 -left-4 w-24 h-24 bg-my-primary/10 rounded-full"></div>
+        <svg class="absolute bottom-4 right-4 w-10 h-10 text-my-primary opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27l-5.18 2.73 1-5.81-4.24-4.13 5.83-.85L12 3.99l2.6 5.23 5.83.85-4.24 4.13 1 5.81z"/></svg>
+        <div class="relative w-40 h-40 mx-auto mb-4">
+            <img class="w-full h-full rounded-2xl object-cover" src="/src/assets/struktur/demis/8.jpg" alt="Anggota 1">
+        </div>
+    </div>
+
+    <div class="bg-zinc-900 w-full sm:w-1/2 lg:w-1/4 rounded-2xl p-6 text-center relative overflow-hidden shadow-lg slide-up">
+        <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-my-primary/10 rounded-full"></div>
+        <svg class="absolute top-4 right-4 w-10 h-10 text-my-primary opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27l-5.18 2.73 1-5.81-4.24-4.13 5.83-.85L12 3.99l2.6 5.23 5.83.85-4.24 4.13 1 5.81z"/></svg>
+        <div class="relative w-40 h-40 mx-auto mb-4">
+            <img class="w-full h-full rounded-2xl object-cover" src="/src/assets/struktur/demis/10.jpg" alt="Anggota 2">
+        </div>
+    </div>
+
+    <div class=" w-full sm:w-1/2 lg:w-1/4 rounded-2xl p-6 text-center relative overflow-hidden shadow-lg slide-left">
+        <div class="absolute -top-4 -right-4 w-24 h-auto bg-my-primary/10 rounded-full"></div>
+        <svg class="absolute bottom-4 left-4 w-10 h-10 text-my-primary opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27l-5.18 2.73 1-5.81-4.24-4.13 5.83-.85L12 3.99l2.6 5.23 5.83.85-4.24 4.13 1 5.81z"/></svg>
+        <div class="relative w-40 h-auto mx-auto mb-4">
+            <img class="w-full h-full rounded-2xl object-cover" src="/src/assets/struktur/demis/6.jpg" alt="Anggota 3">
+        </div>
+    </div>
+
+</div>
+        <!-- Contact ✅-->
+        <section id="contact" class="pt-32">
+            <div class="px-10 lg:px-32">
+                <h1 class="title text-center mb-16">Hubungi <span class="text-my-primary">Kami</span></h1>
+                <div class="flex flex-col lg:flex-row gap-10 ">
+                    <!-- Image -->
+                    <div class="slide-left hidden lg:w-1/2 lg:block">
+                        <img class="w-full max-w-md mx-auto" src="assets/chat1.svg" alt="Contact Illustration">
+                    </div>
+                    
+                    <!-- Social Media Links -->
+                    <div class="slide-right w-full m-auto lg:w-1/2 lg:m-0">
+                        <div class="bg-zinc-900 p-5 rounded-lg shadow-lg h-full">
+                            <h2 class="text-xl px-4 mb-3">Follow <span class="text-my-primary">Kami!!!</span></h2>
+                            <ul class="flex flex-col  h-full">
+                                <li class="slide-right">
+                                    <a href="https://instagram.com/robotika.ith" target="_blank" class="flex items-center gap-4 hover:bg-zinc-800 p-4 rounded-lg transition-colors">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-semibold">Instagram</h3>
+                                            <p class="text-zinc-400">@robotika.ith</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="slide-right">
+                                    <a href="https://tiktok.com/@robotika.ith" target="_blank" class="flex items-center gap-4 hover:bg-zinc-800 p-4 rounded-lg transition-colors">
+                                        <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-semibold">TikTok</h3>
+                                            <p class="text-zinc-400">@robotika.ith</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="slide-right">
+                                    <a href="https://youtube.com/@ROBOTIKAITH" target="_blank" class="flex items-center gap-4 hover:bg-zinc-800 p-4 rounded-lg transition-colors">
+                                        <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-semibold">YouTube</h3>
+                                            <p class="text-zinc-400">@ROBOTIKAITH</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer ✅-->
+    <footer class="pt-32 shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+        <div class="px-10 relative bg-black bg-opacity-70 py-32  lg:px-32">
+            <div class="absolute inset-0 z-0">
+                <img src="assets/footer.jpeg" alt="Background" class="w-full h-full object-cover opacity-20">
+            </div>
+    
+            <div class="flex flex-col gap-10 text-md relative z-10 lg:flex-row lg:justify-center lg:gap-36">
+                <!-- HERO -->
+                <div>
+                    <div class="flex items-center gap-2">
+                        <img src="assets/hero.png" alt="Logo Hero" class="w-10 h-10" />
+                        <h1 class="text-xl font-bold">HERO</h1>
+                    </div>
+                </div>
+
+                <!-- Beranda -->
+                <div>
+                    <h3 class="font-semibold mb-1">Beranda</h3>
+                    <ul class="text-zinc-300 flex flex-col gap-[2px]">
+                        <li><a class="hover:underline" href="#home">Home</a></li>
+                        <li><a class="hover:underline" href="#tentang">Tentang</a></li>
+                        <li><a class="hover:underline" href="#visimisi">Visi Misi</a></li>
+                        <li><a class="hover:underline" href="#filosofi">Filosofi Logo</a></li>
+                        <li><a class="hover:underline" href="#struktur">Struktur</a></li>
+                        <li><a class="hover:underline" href="#berita">Berita</a></li>
+                        <li><a class="hover:underline" href="#contact">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+            
+                <!-- Contact -->
+                <div class="">
+                    <h3 class="font-semibold mb-1">Kontak</h3>
+                    <ul class="text-zinc-300 flex flex-col gap-2">
+                        <li>
+                            <a href="https://instagram.com/robotika.ith" target="_blank" class="flex items-center gap-2 hover:underline transition-colors">
+                                <div class="w-5 h-5 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                    </svg>
+                                </div>
+                                <span>robotika.ith</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://tiktok.com/@robotika.ith" target="_blank" class="flex items-center gap-2 hover:underline transition-colors">
+                                <div class="w-5 h-5 bg-black rounded-full flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                                    </svg>
+                                </div>
+                                <span>robotika.ith</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://youtube.com/@ROBOTIKAITH" target="_blank" class="flex items-center gap-2 hover:underline transition-colors">
+                                <div class="w-5 h-5 bg-red-600 rounded-full flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                    </svg>
+                                </div>
+                                <span>ROBOTIKAITH</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center text-xs text-gray-400 mt-8">
+                &copy; 2025 Habibie Engineering Robotic of Organization
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('screen', {
+                width: window.innerWidth,
+                isDesktop() {
+                    return this.width >= 1024;
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                Alpine.store('screen').width = window.innerWidth;
+            });
+        });
+    </script>
+</body>
+</html>

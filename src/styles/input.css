@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+    --color-my-primary: #dc2626;
+    --font-bevan: "Bevan", sans-serif;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(-10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes serongKaku {
+  0% {
+    transform: translate(-10px, -10px); 
+  }
+  50% {
+    transform: translate(10px, 10px); 
+  }
+  100% {
+    transform: translate(-10px, -10px); 
+  }
+}
+
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+body {
+    @apply text-white font-roboto text-xs !important;
+}
+
+p {
+    @apply text-[12px]
+}
+
+h1, h2 {
+    @apply font-[bevan] 
+}
+
+button, .menu {
+    @apply transition-all duration-150 ease-in-out
+}
+
+.title {
+    @apply text-2xl font-bevan;
+}
+
+.sub-title {
+    @apply text-xl font-bevan;
+}
+
+.misi-number {
+    @apply absolute bg-primary w-10 h-10 flex justify-center items-center -top-4 -left-4 p-2 rounded-full
+}
+
+.misi-point {
+    @apply flex gap-2 relative lg:max-w-[275px];
+}
+
+.text-container-primary {
+    @apply bg-zinc-900/75 p-5 backdrop-blur-lg shadow-lg rounded
+}
+
+.primary-button {
+    @apply bg-my-primary px-5 py-2 rounded-lg hover:bg-primary/90 hover:text-white cursor-pointer
+}
+
+.scroll-driven {
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+
+.slide-left {
+    @apply animate-[slideInLeft_ease-in-out];
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+.slide-right {
+    @apply animate-[slideInRight_ease-in-out];
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+.slide-up {
+    @apply animate-[slideInUp_ease-in-out];
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+.slide-down {
+    @apply animate-[slideInDown_ease-in-out];
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+
+.animate-serong-linear {
+  animation: serongKaku 1s linear infinite; 
+}
+
+.animate-serong-steps {
+  animation: serongKaku 1s steps(2, jump-none) infinite;
+}
+
+.delay-75 {
+    animation-delay: 75ms;
+}
+
+.delay-100 {
+    animation-delay: 100ms;
+}
+
+.delay-150 {
+    animation-delay: 150ms;
+}
+
