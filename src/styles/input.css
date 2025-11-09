@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
 @theme {
     --color-my-primary: #dc2626;
     --font-bevan: "Bevan", sans-serif;
@@ -74,7 +75,7 @@ p {
 }
 
 h1, h2 {
-    @apply font-[bevan] 
+    @apply font-[bevan] text-white
 }
 
 button, .menu {
